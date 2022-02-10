@@ -9,8 +9,8 @@ router.get("/:short", async (req, res) => {
   try {
     const { short } = req.params;
     const data = await pairs.read(short);
-    if (data[0]) {
-      res.redirect(data[0].long);
+    if (data) {
+      res.redirect(data.long);
     } else {
       res.status(404).json({ message: "URL doesn't exist!" });
     }
